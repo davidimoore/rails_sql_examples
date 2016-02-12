@@ -8,8 +8,6 @@ describe QueryObject do
   end
 
   context '#select_all_order_by' do
-
-
     it 'returns an array of objects ordered by a column' do
       album_1 = create(:album, title:'album 1')
       album_2 = create(:album, title:'album 2')
