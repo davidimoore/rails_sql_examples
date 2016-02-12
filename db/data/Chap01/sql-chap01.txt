@@ -1,0 +1,55 @@
+-- 01 The SELECT statement
+-- world.db
+
+SELECT * FROM Country;
+SELECT * FROM Country ORDER BY Name;
+SELECT Name, LifeExpectancy FROM Country ORDER BY Name;
+SELECT Name, LifeExpectancy AS 'Life Expectancy' FROM Country ORDER BY Name;
+SELECT 'Hello, World';
+SELECT COUNT(*) FROM Country;
+
+-- 02 Selecting Rows
+-- world.db
+
+SELECT Name, Continent, Region FROM Country;
+SELECT Name, Continent, Region FROM Country WHERE Continent = "Europe";
+SELECT Name, Continent, Region FROM Country WHERE Continent = "Europe" LIMIT 5;
+
+-- 02 Selecting Rows
+-- world.db
+
+SELECT * FROM Country ORDER BY Code LIMIT 5;
+SELECT Name, Code, Region, Population FROM Country ORDER BY Code LIMIT 5;
+SELECT Name AS Country, Code AS ISO, Region, Population AS Pop FROM Country ORDER BY Code LIMIT 5;
+
+-- 03 Counting Rows
+-- world.db
+
+SELECT COUNT(*) FROM Country;
+SELECT COUNT(*) FROM Country WHERE Population > 1000000;
+SELECT COUNT(*) FROM Country WHERE Population > 100000000;
+SELECT COUNT(*) FROM Country WHERE Population > 100000000 AND Continent = 'Europe' ;
+
+-- 03 Inserting Data
+-- test.db
+
+SELECT * FROM Customer;
+INSERT INTO Customer (name, address, city, state, zip) VALUES ('Fred Flintstone', '123 Cobblestone Way', 'Bedrock', 'CA', '91234');SELECT * FROM Customer;
+INSERT INTO Customer (name, city, state) VALUES ('Jimi Hendrix', 'Renton', 'WA');
+
+-- 04 Updating Data
+-- test.db
+
+SELECT * FROM Customer;
+UPDATE Customer SET Address = '123 Music Avenue', Zip = '98056' WHERE id = 5;
+UPDATE Customer SET Address = '2603 S Washington St', Zip = '98056' WHERE id = 5;
+UPDATE Customer SET Address = NULL, Zip = NULL WHERE id = 5;
+
+-- 05 Deleting Data
+-- test.db
+
+SELECT * FROM Customer WHERE id = 4;
+DELETE from Customer WHERE id = 4;
+DELETE from Customer WHERE id = 5;
+SELECT * FROM Customer;
+
