@@ -17,4 +17,15 @@ describe QueryObject do
       expect(QueryObject.new(Album).select_all_order_by('title')).to_not eq([album_2, album_1])
     end
   end
+
+  context '#select_columns' do
+    before(:all) do
+      [:afganistan, :netherlands].each  {|country| create(country)}
+    end
+    it 'returns a result set of column values' do
+      plucked_results = Country.pluck(:name, :life_expectancy)
+      expect(QueryObject.new(Country).select_columns(:name, :life_expectancy))
+      .to match plucked_results
+    end
+  end
 end
