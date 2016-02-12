@@ -34,7 +34,7 @@ FactoryGirl.define do
         code_2 "NL"
     end
     
-    factory :afganistan do
+    factory :afghanistan do
        code "AFG"
         name "Afghanistan"
         continent "Asia"
