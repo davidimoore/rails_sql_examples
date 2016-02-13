@@ -1,21 +1,7 @@
 FactoryGirl.define do
   factory :country do
-    code "MyText"
-    name "MyText"
-    continent "MyText"
-    region "MyText"
-    surface_area 1.5
-    indep_year 1
-    population 1
-    life_expectancy 1.5
-    gnp 1.5
-    gnp_old 1.5
-    local_name "MyText"
-    government_form "MyText"
-    head_of_state "MyText"
-    capital 1
-    code_2 "MyText"
-    
+    name "Country of Factory"
+
     factory :netherlands do
         code "NLD"
         name "Netherlands"
@@ -69,6 +55,58 @@ FactoryGirl.define do
       head_of_state "Jiang Zemin"
       capital 1891
       code_2 "CN"
+
+    end
+    
+    factory :antarctica do
+      code "ATA"
+      name "Antarctica"
+      continent "Antarctica"
+      region "Antarctica"
+      surface_area 13120000.0
+      population 0
+      gnp 0.0
+      local_name ""
+      government_form "Co-administrated"
+      head_of_state ""
+      code_2 "AQ"
+
+    end
+    
+    factory :french_guiana do
+      code "GUF"
+      name "French Guiana"
+      continent "South America"
+      region "South America"
+      surface_area 90000.0
+      indep_year nil
+      population 181000
+      life_expectancy 76.1
+      gnp 681.0
+      gnp_old nil
+      local_name "Guyane française"
+      government_form "Overseas Department of France"
+      head_of_state "Jacques Chirac"
+      capital 3014
+      code_2 "GF"
+    end
+    
+    factory :french_polynesia do
+      code "PYF"
+      name "French Polynesia"
+      continent "Oceania"
+      region "Polynesia"
+      surface_area 4000.0
+      indep_year nil
+      population 235000
+      life_expectancy 74.8
+      gnp 818.0
+      gnp_old 781.0
+      local_name "Polynésie française"
+      government_form "Nonmetropolitan Territory of France"
+      head_of_state "Jacques Chirac"
+      capital 3016
+      code_2 "PF"
 
     end
   end

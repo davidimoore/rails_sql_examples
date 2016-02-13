@@ -6,7 +6,8 @@ describe QueryObject do
       sql = 'FIND STUFF'
       allow(query_target).to receive(:find_by_sql).with(sql)
       QueryObject.new(query_target).ar_query(sql)
-      expect(query_target).to have_received(:find_by_sql).with(sql)
+      expect(query_target)
+      .to have_received(:find_by_sql).with(sql)
     end
   end
 
@@ -23,8 +24,10 @@ describe QueryObject do
       album_1 = create(:album, title:'album 1')
       album_2 = create(:album, title:'album 2')
       query = "SELECT * FROM albums ORDER BY title"
-      expect(QueryObject.new(Album).ar_query(query)).to eq([album_1, album_2])
-      expect(QueryObject.new(Album).ar_query(query)).to_not eq([album_2, album_1])
+      expect(QueryObject.new(Album).ar_query(query))
+      .to eq([album_1, album_2])
+      expect(QueryObject.new(Album).ar_query(query))
+      .to_not eq([album_2, album_1])
     end
   end
 
@@ -34,7 +37,8 @@ describe QueryObject do
 
     it 'returns a result set of column values' do
       query = "SELECT name, life_expectancy FROM countries"
-      expect(QueryObject.new(Country).sql_query(query)).to match(["Afghanistan", "45.9", "Netherlands", "78.3"] )
+      expect(QueryObject.new(Country).sql_query(query))
+      .to match(["Afghanistan", "45.9", "Netherlands", "78.3"] )
     end
   end
 
@@ -43,7 +47,8 @@ describe QueryObject do
     let!(:netherlands) {create(:netherlands)}
     it 'returns a set of rows filtered by a where clause' do
       query = "SELECT name, continent, region FROM countries WHERE continent = 'Asia'"
-      expect(QueryObject.new(Country).sql_query(query)).to match(["Afghanistan", "Asia", "Southern and Central Asia"]  )
+      expect(QueryObject.new(Country).sql_query(query))
+      .to match(["Afghanistan", "Asia", "Southern and Central Asia"]  )
 
     end
   end
@@ -54,7 +59,8 @@ describe QueryObject do
     let!(:netherlands) {create(:netherlands)}
     it 'returns a set of rows filtered by a where clause' do
       query = "SELECT name, continent, region FROM countries WHERE continent = 'Asia' LIMIT 1"
-      expect(QueryObject.new(Country).sql_query(query)).to match(["Afghanistan", "Asia", "Southern and Central Asia"])
+      expect(QueryObject.new(Country).sql_query(query))
+      .to match(["Afghanistan", "Asia", "Southern and Central Asia"])
 
     end
   end
@@ -65,9 +71,95 @@ describe QueryObject do
     let!(:netherlands) {create(:netherlands)}
     it 'counts the number of rows matching a search criteria' do
       query = "SELECT COUNT(*) FROM countries WHERE continent = 'Asia'"
-      expect(QueryObject.new(Country).sql_query(query)[0]).to eq("2")
+      expect(QueryObject.new(Country).sql_query(query)[0])
+      .to eq("2")
+    end
+  end
 
+  context 'FILTERING DATA WITH LIKE and ILIKE and IN' do
+    let!(:afghanistan) { create(:afghanistan)}
+    let!(:china) { create(:china)}
+    let!(:netherlands) {create(:netherlands)}
+    let!(:antarctica) { create(:antarctica)}
+    let!(:french_guiana) {create(:french_guiana)}
+    let!(:french_polynesia) {create(:french_polynesia)}
 
+    it 'selects rows matching complex criterian' do
+      query = "SELECT name, continent, population "
+      query += "FROM countries "
+      query += "WHERE continent = 'Asia' "
+      query += "AND population IS NOT NULL "
+      query += "ORDER BY population DESC"
+
+      expect(QueryObject.new(Country).sql_query(query))
+      .to match(["China", "Asia", "1277558000", "Afghanistan", "Asia", "22720000"])
+
+    end
+    it 'selects rows when the criteria includes an AND statement' do
+      query = "SELECT name, continent, population "
+      query += "FROM countries "
+      query += "WHERE population < 1000000000 "
+      query += "AND continent = 'Asia' "
+      expect(QueryObject.new(Country).sql_query(query))
+      .to match(["Afghanistan", "Asia", "22720000"] )
+    end
+
+    it 'selects rows when the criteria inclues a wildcard LIKE statement' do
+      query = "SELECT name, continent, population "
+      query += "FROM countries "
+      query += "WHERE name LIKE '%French%' "
+      expect(QueryObject.new(Country).sql_query(query))
+      .to match(["French Guiana", "South America", "181000", "French Polynesia", "Oceania", "235000"] )
+    end
+
+    it 'selects rows when the criteria includes a wildcard ILIKE statement' do
+      query = "SELECT name, continent, population "
+      query += "FROM countries "
+      query += "WHERE name ILIKE '%french%' "
+      expect(QueryObject.new(Country).sql_query(query))
+          .to match(["French Guiana", "South America", "181000", "French Polynesia", "Oceania", "235000"] )
+    end
+
+    it 'selects rows when the criteria includes an IN statement' do
+      query = "SELECT name "
+      query += "FROM countries "
+      query += "WHERE continent IN ('Asia', 'South America') "
+      expect(QueryObject.new(Country).sql_query(query))
+          .to match( ["Afghanistan", "China", "French Guiana"] )
+    end
+  end
+
+  context 'FILTERING DISTINCT DATA' do
+    let!(:afghanistan) { create(:afghanistan)}
+    let!(:china) { create(:china)}
+    let!(:netherlands) {create(:netherlands)}
+    let!(:antarctica) { create(:antarctica)}
+    let!(:french_guiana) {create(:french_guiana)}
+    let!(:french_polynesia) {create(:french_polynesia)}
+    it 'returns unique results' do
+      indistinct_query = "SELECT continent "
+      indistinct_query += "FROM countries "
+
+      expect(QueryObject.new(Country).sql_query(indistinct_query))
+      .to match( ["Asia", "Asia", "Europe", "Antarctica", "South America", "Oceania"] )
+
+      distinct_query = "SELECT DISTINCT continent "
+      distinct_query += "FROM countries "
+
+      expect(QueryObject.new(Country).sql_query(distinct_query))
+      .to match_array( ["Asia", "Europe", "Antarctica", "South America", "Oceania"] )
+    end
+
+    it 'returns unique results for multiple columns' do
+      [[1,1],[3,1],[1,2]].each do |scores|
+        create(:two_player_score, player_1:scores[0], player_2:scores[1])
+      end
+
+      query = "SELECT DISTINCT player_1, player_2 "
+      query += "FROM two_player_scores"
+
+      expect(QueryObject.new(TwoPlayerScore).connection.execute(query).values)
+      .to match_array( [["1", "1"], ["1", "2"], ["3", "1"]])
     end
   end
 
