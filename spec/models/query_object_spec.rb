@@ -38,5 +38,15 @@ describe QueryObject do
     end
   end
 
+  context 'SELECT ROWS' do
+    let!(:afghanistan) { create(:afghanistan)}
+    let!(:netherlands) {create(:netherlands)}
+    it 'returns a set of rows filtered by a where clause' do
+      query = "SELECT name, continent, region FROM countries WHERE continent = 'Asia'"
+      expect(QueryObject.new(Country).sql_query(query)).to match([["Afghanistan", "Asia", "Southern and Central Asia"]]  )
+
+    end
+  end
+
 
 end
