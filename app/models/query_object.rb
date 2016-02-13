@@ -10,7 +10,7 @@ class QueryObject
   end
 
   def sql_query(sql)
-    @connection.execute(sql).values
+    @connection.execute(sql).values.flatten
   end
 
   private

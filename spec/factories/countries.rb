@@ -52,6 +52,25 @@ FactoryGirl.define do
         code_2 "AF"
       
     end
+    
+    factory :china do
+      code "CHN"
+      name "China"
+      continent "Asia"
+      region "Eastern Asia"
+      surface_area 9572900.0
+      indep_year -1523
+      population 1277558000
+      life_expectancy 71.4
+      gnp 982268.0
+      gnp_old 917719.0
+      local_name "Zhongquo"
+      government_form "People's Republic"
+      head_of_state "Jiang Zemin"
+      capital 1891
+      code_2 "CN"
+
+    end
   end
   
 end

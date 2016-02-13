@@ -34,7 +34,7 @@ describe QueryObject do
 
     it 'returns a result set of column values' do
       query = "SELECT name, life_expectancy FROM countries"
-      expect(QueryObject.new(Country).sql_query(query)).to match([["Afghanistan", "45.9"], ["Netherlands", "78.3"]] )
+      expect(QueryObject.new(Country).sql_query(query)).to match(["Afghanistan", "45.9", "Netherlands", "78.3"] )
     end
   end
 
@@ -43,7 +43,30 @@ describe QueryObject do
     let!(:netherlands) {create(:netherlands)}
     it 'returns a set of rows filtered by a where clause' do
       query = "SELECT name, continent, region FROM countries WHERE continent = 'Asia'"
-      expect(QueryObject.new(Country).sql_query(query)).to match([["Afghanistan", "Asia", "Southern and Central Asia"]]  )
+      expect(QueryObject.new(Country).sql_query(query)).to match(["Afghanistan", "Asia", "Southern and Central Asia"]  )
+
+    end
+  end
+
+  context 'SELECT AND LIMIT ROWS' do
+    let!(:afghanistan) { create(:afghanistan)}
+    let!(:china) { create(:china)}
+    let!(:netherlands) {create(:netherlands)}
+    it 'returns a set of rows filtered by a where clause' do
+      query = "SELECT name, continent, region FROM countries WHERE continent = 'Asia' LIMIT 1"
+      expect(QueryObject.new(Country).sql_query(query)).to match(["Afghanistan", "Asia", "Southern and Central Asia"])
+
+    end
+  end
+
+  context 'COUNTING ROWS' do
+    let!(:afghanistan) { create(:afghanistan)}
+    let!(:china) { create(:china)}
+    let!(:netherlands) {create(:netherlands)}
+    it 'counts the number of rows matching a search criteria' do
+      query = "SELECT COUNT(*) FROM countries WHERE continent = 'Asia'"
+      expect(QueryObject.new(Country).sql_query(query)[0]).to eq("2")
+
 
     end
   end
