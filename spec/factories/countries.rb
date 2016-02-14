@@ -2,43 +2,41 @@ FactoryGirl.define do
   factory :country do
     name "Country of Factory"
 
-    factory :netherlands do
-        code "NLD"
-        name "Netherlands"
-        continent "Europe"
-        region "Western Europe"
-        surface_area 41526.0
-        indep_year 1581
-        population 15864000
-        life_expectancy 78.3
-        gnp 371362.0
-        gnp_old 360478.0
-        local_name "Nederland"
-        government_form "Constitutional Monarchy"
-        head_of_state "Beatrix"
-        capital 5
-        code_2 "NL"
-    end
-    
+
     factory :afghanistan do
-       code "AFG"
-        name "Afghanistan"
-        continent "Asia"
-        region "Southern and Central Asia"
-        surface_area 652090.0
-        indep_year 1919
-        population 22720000
-        life_expectancy 45.9
-        gnp 5976.0
-        gnp_old nil
-        local_name "Afganistan/Afqanestan"
-        government_form "Islamic Emirate"
-        head_of_state "Mohammad Omar"
-        capital 1
-        code_2 "AF"
-      
+      code "AFG"
+      name "Afghanistan"
+      continent "Asia"
+      region "Southern and Central Asia"
+      surface_area 652090.0
+      indep_year 1919
+      population 22720000
+      life_expectancy 45.9
+      gnp 5976.0
+      gnp_old nil
+      local_name "Afganistan/Afqanestan"
+      government_form "Islamic Emirate"
+      head_of_state "Mohammad Omar"
+      capital 1
+      code_2 "AF"
+
     end
-    
+
+    factory :antarctica do
+      code "ATA"
+      name "Antarctica"
+      continent "Antarctica"
+      region "Antarctica"
+      surface_area 13120000.0
+      population 0
+      gnp 0.0
+      local_name ""
+      government_form "Co-administrated"
+      head_of_state ""
+      code_2 "AQ"
+
+    end
+
     factory :china do
       code "CHN"
       name "China"
@@ -57,22 +55,44 @@ FactoryGirl.define do
       code_2 "CN"
 
     end
-    
-    factory :antarctica do
-      code "ATA"
-      name "Antarctica"
-      continent "Antarctica"
-      region "Antarctica"
-      surface_area 13120000.0
-      population 0
-      gnp 0.0
-      local_name ""
-      government_form "Co-administrated"
-      head_of_state ""
-      code_2 "AQ"
+
+    factory :el_salvador do
+      code "SLV"
+      name "El Salvador"
+      continent "North America"
+      region "Central America"
+      surface_area 21041.0
+      indep_year 1841
+      population 6276000
+      life_expectancy 69.7
+      gnp 11863.0
+      gnp_old 11203.0
+      local_name "El Salvador"
+      government_form "Republic"
+      head_of_state "Francisco Guillermo Flores Pérez"
+      capital 645
+      code_2 "SV"
 
     end
-    
+
+    factory :france do
+      code "FRA"
+      name "France"
+      continent "Europe"
+      region "Western Europe"
+      surface_area 551500.0
+      indep_year 843
+      population 59225700
+      life_expectancy 78.8
+      gnp 1424285.0
+      gnp_old 1392448.0
+      local_name "France"
+      government_form "Republic"
+      head_of_state "Jacques Chirac"
+      capital 2974
+      code_2 "FR"
+    end
+
     factory :french_guiana do
       code "GUF"
       name "French Guiana"
@@ -90,7 +110,7 @@ FactoryGirl.define do
       capital 3014
       code_2 "GF"
     end
-    
+
     factory :french_polynesia do
       code "PYF"
       name "French Polynesia"
@@ -109,6 +129,25 @@ FactoryGirl.define do
       code_2 "PF"
 
     end
+
+    factory :netherlands do
+        code "NLD"
+        name "Netherlands"
+        continent "Europe"
+        region "Western Europe"
+        surface_area 41526.0
+        indep_year 1581
+        population 15864000
+        life_expectancy 78.3
+        gnp 371362.0
+        gnp_old 360478.0
+        local_name "Nederland"
+        government_form "Constitutional Monarchy"
+        head_of_state "Beatrix"
+        capital 5
+        code_2 "NL"
+    end
+
   end
   
 end

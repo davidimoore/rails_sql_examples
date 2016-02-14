@@ -1,0 +1,3 @@
+class JoinQueryObject < QueryObject
+
+end

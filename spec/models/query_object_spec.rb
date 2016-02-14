@@ -163,5 +163,62 @@ describe QueryObject do
     end
   end
 
+  context 'SORTING WITH ORDER BY' do
+    before do
+      [:afghanistan, :china, :el_salvador, :french_guiana, :france, :netherlands].each {|country| create(country)}
+    end
+
+    it 'returns results ordered by a column' do
+      query = "SELECT name FROM countries "
+      query += "ORDER BY name"
+      expect(QueryObject.new(Country).sql_query(query))
+     .to match(["Afghanistan", "China", "El Salvador","France", "French Guiana", "Netherlands"])
+    end
+
+    it 'returns results in reverse order by column' do
+      query = "SELECT name FROM countries "
+      query += "ORDER BY name DESC"
+      expect(QueryObject.new(Country).sql_query(query))
+          .to match(["Netherlands", "French Guiana", "France", "El Salvador", "China", "Afghanistan"])
+    end
+
+    it 'returns results sorted by multiple columns' do
+      query = "SELECT name, continent "
+      query += "FROM countries "
+      query += "ORDER BY continent, name"
+      expect(QueryObject.new(Country).connection.execute(query).values)
+      .to match([["Afghanistan", "Asia"], ["China", "Asia"],
+                 ["France", "Europe"], ["Netherlands", "Europe"],
+                 ["El Salvador", "North America"],
+                 ["French Guiana", "South America"]])
+    end
+
+    it 'returns results sorted by two columns ascending and one column descending' do
+      query = "SELECT name, continent, region "
+      query += "FROM countries "
+      query += "ORDER BY continent DESC, region, name"
+      expect(QueryObject.new(Country).connection.execute(query).values)
+          .to match([["French Guiana", "South America", "South America"],
+                     ["El Salvador", "North America", "Central America"],
+                     ["France", "Europe", "Western Europe"], ["Netherlands", "Europe", "Western Europe"],
+                     ["China", "Asia", "Eastern Asia"], ["Afghanistan", "Asia", "Southern and Central Asia"]]  )
+    end
+
+
+  end
+
+  context 'CONDITIONAL EXPRESSIONS WITH CASE' do
+    before do
+      create(:bool_test, a:1, b:0)
+    end
+    it 'returns results based on a case statement' do
+      query = "SELECT a,b, "
+        query += "CASE a WHEN 1 THEN 'true' ELSE 'false' END as boolA, "
+        query += "CASE b WHEN 1 THEN 'true' ELSE 'false' END as boolB "
+      query += "FROM bool_tests"
+      expect(QueryObject.new(BoolTest).sql_query(query))
+      .to match( ["1", "0", "true", "false"]  )
+    end
+  end
 
 end
