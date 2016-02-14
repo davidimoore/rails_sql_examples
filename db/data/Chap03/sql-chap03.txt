@@ -21,9 +21,9 @@ INSERT INTO right VALUES ( 8, 'right 08' );
 INSERT INTO right VALUES ( 9, 'right 09' );
 INSERT INTO right VALUES ( 10, 'right 10' );
 INSERT INTO right VALUES ( 11, 'right 11' );
-INSERT INTO right VALUES ( 11, 'right 12' );
-INSERT INTO right VALUES ( 11, 'right 13' );
-INSERT INTO right VALUES ( 11, 'right 14' );
+INSERT INTO right VALUES ( 12, 'right 12' );
+INSERT INTO right VALUES ( 13, 'right 13' );
+INSERT INTO right VALUES ( 14, 'right 14' );
 
 SELECT * FROM left;
 SELECT * FROM right;

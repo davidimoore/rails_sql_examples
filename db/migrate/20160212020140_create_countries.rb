@@ -17,7 +17,7 @@ class CreateCountries < ActiveRecord::Migration
       t.integer :capital
       t.text :code_2
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

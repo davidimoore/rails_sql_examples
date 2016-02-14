@@ -6,7 +6,7 @@ class CreateCountryLanguages < ActiveRecord::Migration
       t.integer :is_official
       t.float :percentage
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

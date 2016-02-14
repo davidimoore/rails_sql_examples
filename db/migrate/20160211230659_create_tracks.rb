@@ -6,7 +6,7 @@ class CreateTracks < ActiveRecord::Migration
       t.integer :track_number
       t.integer :duration
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

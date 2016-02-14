@@ -1,4 +1,4 @@
-class JoinQueryObject < QueryObject
+class AggregateQueryObject < QueryObject
   def initialize
     @connection = ActiveRecord::Base.connection
   end

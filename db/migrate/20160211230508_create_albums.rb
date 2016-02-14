@@ -6,7 +6,7 @@ class CreateAlbums < ActiveRecord::Migration
       t.text :label
       t.text :released
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

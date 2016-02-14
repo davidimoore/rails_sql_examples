@@ -7,7 +7,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.text :state
       t.text :zip
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

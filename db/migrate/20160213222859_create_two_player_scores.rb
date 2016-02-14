@@ -4,7 +4,7 @@ class CreateTwoPlayerScores < ActiveRecord::Migration
       t.integer :player_1
       t.integer :player_2
 
-      t.timestamps null: false
+      t.timestamps default: DateTime.now
     end
   end
 end

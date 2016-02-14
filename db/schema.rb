@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213232140) do
+ActiveRecord::Schema.define(version: 20160214000930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,15 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.text     "artist"
     t.text     "label"
     t.text     "released"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", default: '2016-02-14 00:36:18'
+    t.datetime "updated_at", default: '2016-02-14 00:36:18'
   end
 
   create_table "bool_tests", force: :cascade do |t|
     t.integer  "a"
     t.integer  "b"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: '2016-02-14 00:36:18'
+    t.datetime "updated_at", default: '2016-02-14 00:36:18'
   end
 
   create_table "cities", force: :cascade do |t|
@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.text     "country_code"
     t.text     "district"
     t.text     "population"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",   default: '2016-02-14 00:36:18'
   end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
     t.string   "body"
-    t.datetime "created_at", default: '2016-02-12 19:23:05'
-    t.datetime "updated_at", default: '2016-02-12 19:23:05'
+    t.datetime "created_at", default: '2016-02-14 00:36:18'
+    t.datetime "updated_at", default: '2016-02-14 00:36:18'
   end
 
   create_table "countries", force: :cascade do |t|
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.text     "head_of_state"
     t.integer  "capital"
     t.text     "code_2"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",      default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",      default: '2016-02-14 00:36:18'
   end
 
   create_table "country_languages", force: :cascade do |t|
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.text     "language"
     t.integer  "is_official"
     t.float    "percentage"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",   default: '2016-02-14 00:36:18'
   end
 
   create_table "customers", force: :cascade do |t|
@@ -83,21 +83,33 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.text     "city"
     t.text     "state"
     t.text     "zip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", default: '2016-02-14 00:36:18'
+    t.datetime "updated_at", default: '2016-02-14 00:36:18'
   end
 
   create_table "items", force: :cascade do |t|
     t.text     "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",  default: '2016-02-14 00:36:18'
+  end
+
+  create_table "lefts", force: :cascade do |t|
+    t.text     "description"
+    t.datetime "created_at",  default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",  default: '2016-02-14 00:36:18'
   end
 
   create_table "posts", force: :cascade do |t|
     t.string   "body"
-    t.datetime "created_at", default: '2016-02-12 19:23:05'
-    t.datetime "updated_at", default: '2016-02-12 19:23:05'
+    t.datetime "created_at", default: '2016-02-14 00:36:18'
+    t.datetime "updated_at", default: '2016-02-14 00:36:18'
+  end
+
+  create_table "rights", force: :cascade do |t|
+    t.text     "description"
+    t.datetime "created_at",  default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",  default: '2016-02-14 00:36:18'
   end
 
   create_table "sales", force: :cascade do |t|
@@ -106,8 +118,8 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.date     "date"
     t.integer  "quantity"
     t.integer  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",  default: '2016-02-14 00:36:18'
   end
 
   create_table "tracks", force: :cascade do |t|
@@ -115,15 +127,15 @@ ActiveRecord::Schema.define(version: 20160213232140) do
     t.text     "title"
     t.integer  "track_number"
     t.integer  "duration"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   default: '2016-02-14 00:36:18'
+    t.datetime "updated_at",   default: '2016-02-14 00:36:18'
   end
 
   create_table "two_player_scores", force: :cascade do |t|
     t.integer  "player_1"
     t.integer  "player_2"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", default: '2016-02-14 00:36:18'
+    t.datetime "updated_at", default: '2016-02-14 00:36:18'
   end
 
 end

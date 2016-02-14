@@ -7,7 +7,7 @@ class CreateSales < ActiveRecord::Migration
       t.integer :quantity
       t.integer :price
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

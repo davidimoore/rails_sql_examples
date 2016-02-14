@@ -6,7 +6,7 @@ class CreateCities < ActiveRecord::Migration
       t.text :district
       t.text :population
 
-      t.timestamps
+      t.timestamps default: DateTime.now
     end
   end
 end

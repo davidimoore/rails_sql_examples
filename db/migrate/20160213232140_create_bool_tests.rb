@@ -4,7 +4,7 @@ class CreateBoolTests < ActiveRecord::Migration
       t.integer :a
       t.integer :b
 
-      t.timestamps null: false
+      t.timestamps default: DateTime.now
     end
   end
 end

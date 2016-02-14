@@ -1,7 +1,6 @@
-class CreateItems < ActiveRecord::Migration
+class CreateLefts < ActiveRecord::Migration
   def change
-    create_table :items do |t|
-      t.text :name
+    create_table :lefts do |t|
       t.text :description
 
       t.timestamps default: DateTime.now
