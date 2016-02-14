@@ -147,6 +147,42 @@ FactoryGirl.define do
         capital 5
         code_2 "NL"
     end
+    
+    factory :united_kingdom do
+      code "GBR"
+      name "United Kingdom"
+      continent "Europe"
+      region "British Islands"
+      surface_area 242900.0
+      indep_year 1066
+      population 59623400
+      life_expectancy 77.7
+      gnp 1378330.0
+      gnp_old 1296830.0
+      local_name "United Kingdom"
+      government_form "Constitutional Monarchy"
+      head_of_state "Elisabeth II"
+      capital 456
+      code_2 "GB"
+    end
+
+    factory :united_states do
+      code "USA"
+      name "United States"
+      continent "North America"
+      region "North America"
+      surface_area 9363520.0
+      indep_year 1776
+      population 278357000
+      life_expectancy 77.1
+      gnp 8510700.0
+      gnp_old 8110900.0
+      local_name "United States"
+      government_form "Federal Republic"
+      head_of_state "George W. Bush"
+      capital 3813
+      code_2 "US"
+    end
 
   end
   

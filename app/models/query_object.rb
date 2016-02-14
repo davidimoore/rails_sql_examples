@@ -13,6 +13,10 @@ class QueryObject
     @connection.execute(sql).values.flatten
   end
 
+  def execute(query)
+    @connection.execute(query).values
+  end
+
   private
   def table_name
     @query_target.table_name

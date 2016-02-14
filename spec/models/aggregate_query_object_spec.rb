@@ -68,5 +68,49 @@ describe AggregateQueryObject do
 
   end
 
+  context 'AGGREGATE FUNCTIONS' do
+    let!(:france) { create(:france)}
+    let!(:netherlands) { create(:netherlands)}
+
+
+    it 'returns results that are averaged and grouped' do
+      query = "SELECT region, AVG(population) "
+      query += "FROM countries "
+      query += "GROUP BY region "
+      expect(AggregateQueryObject.new.execute(query))
+      .to match([["Western Europe", "37544850.000000000000"]])
+    end
+
+    it 'returns results that are summed and grouped' do
+      query = "SELECT region, SUM(population) "
+      query += "FROM countries "
+      query += "GROUP BY region "
+      expect(AggregateQueryObject.new.execute(query))
+      .to match([["Western Europe", "75089700"]])
+    end
+  end
+
+  context 'AGGREGATE DISTINCT VALUES' do
+    before do
+      [:china,:france,:netherlands].each do |c|
+        create(c)
+      end
+    end
+
+    it 'returns unique aggregated results' do
+      indistinct_query = "SELECT count(region) "
+      indistinct_query += "FROM countries "
+
+      expect(AggregateQueryObject.new.execute(indistinct_query))
+      .to match([["3"]])
+
+      indistinct_query = "SELECT COUNT(DISTINCT region) "
+      indistinct_query += "FROM countries "
+
+      expect(AggregateQueryObject.new.execute(indistinct_query))
+      .to match([["2"]])
+    end
+
+  end
 
 end
