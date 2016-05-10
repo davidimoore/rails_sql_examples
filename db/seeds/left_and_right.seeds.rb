@@ -1,5 +1,5 @@
 sql =
-"INSERT INTO lefts VALUES ( 1, 'left 01' );
+    "INSERT INTO lefts VALUES ( 1, 'left 01' );
 INSERT INTO lefts VALUES ( 2, 'left 02' );
 INSERT INTO lefts VALUES ( 3, 'left 03' );
 INSERT INTO lefts VALUES ( 4, 'left 04' );

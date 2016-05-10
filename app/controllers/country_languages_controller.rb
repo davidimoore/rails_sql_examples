@@ -49,11 +49,11 @@ class CountryLanguagesController < ApplicationController
 
   private
 
-    def set_country_language
-      @country_language = CountryLanguage.find(params[:id])
-    end
+  def set_country_language
+    @country_language = CountryLanguage.find(params[:id])
+  end
 
-    def country_language_params
-      params.require(:country_language).permit(:country_code, :is_official, :percentage)
-    end
+  def country_language_params
+    params.require(:country_language).permit(:country_code, :is_official, :percentage)
+  end
 end

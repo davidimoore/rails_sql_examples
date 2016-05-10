@@ -1,5 +1,6 @@
 class QueryObject
   attr_accessor :connection
+
   def initialize(query_target)
     @query_target = query_target
     @connection = ActiveRecord::Base.connection
@@ -21,9 +22,6 @@ class QueryObject
   def table_name
     @query_target.table_name
   end
-
-
-
 
 
 end

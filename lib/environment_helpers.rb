@@ -1,5 +1,5 @@
 require_relative('../../config/environment')
-APP_ROOT = Pathname.new File.expand_path("../../../",  __FILE__)
+APP_ROOT = Pathname.new File.expand_path("../../../", __FILE__)
 
 module EnvironmentHelpers
   def staging_app

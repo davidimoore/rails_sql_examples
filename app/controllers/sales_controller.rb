@@ -49,11 +49,11 @@ class SalesController < ApplicationController
 
   private
 
-    def set_sale
-      @sale = Sale.find(params[:id])
-    end
+  def set_sale
+    @sale = Sale.find(params[:id])
+  end
 
-    def sale_params
-      params.require(:sale).permit(:item_id, :customer_id, :date, :quantity, :price)
-    end
+  def sale_params
+    params.require(:sale).permit(:item_id, :customer_id, :date, :quantity, :price)
+  end
 end

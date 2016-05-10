@@ -1,4 +1,3 @@
-
 sql =
     "INSERT INTO albums (id, title, artist, label, released) VALUES (1,'Two Men with the Blues','Willie Nelson and Wynton Marsalis','Blue Note','2008-07-08');
 INSERT INTO albums (id, title, artist, label, released) VALUES (11,'Hendrix in the West','Jimi Hendrix','Polydor','1972-01-00');

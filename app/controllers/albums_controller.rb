@@ -49,11 +49,11 @@ class AlbumsController < ApplicationController
 
   private
 
-    def set_album
-      @album = Album.find(params[:id])
-    end
+  def set_album
+    @album = Album.find(params[:id])
+  end
 
-    def album_params
-      params.require(:album).permit(:title, :artist, :label, :released)
-    end
+  def album_params
+    params.require(:album).permit(:title, :artist, :label, :released)
+  end
 end

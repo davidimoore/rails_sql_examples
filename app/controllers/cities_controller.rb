@@ -49,11 +49,11 @@ class CitiesController < ApplicationController
 
   private
 
-    def set_city
-      @city = City.find(params[:id])
-    end
+  def set_city
+    @city = City.find(params[:id])
+  end
 
-    def city_params
-      params.require(:city).permit(:name, :country_code, :district, :population)
-    end
+  def city_params
+    params.require(:city).permit(:name, :country_code, :district, :population)
+  end
 end

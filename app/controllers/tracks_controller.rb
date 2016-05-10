@@ -49,11 +49,11 @@ class TracksController < ApplicationController
 
   private
 
-    def set_track
-      @track = Track.find(params[:id])
-    end
+  def set_track
+    @track = Track.find(params[:id])
+  end
 
-    def track_params
-      params.require(:track).permit(:album_id, :title, :track_number, :duration)
-    end
+  def track_params
+    params.require(:track).permit(:album_id, :title, :track_number, :duration)
+  end
 end

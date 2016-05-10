@@ -2,7 +2,6 @@
     css file for SID
 */
 
-
 /* page structure */
 
 body {
@@ -10,7 +9,7 @@ body {
     background-color: #998;
 }
 
-body { 
+body {
     font-family: tahoma, verdana, sans-serif;
     font-size: 100%;
     line-height: 130%;
@@ -50,8 +49,7 @@ a:hover {
 .plain {
     font-weight: normal;
     color: #000000;
-    background-color:
-    transparent;
+    background-color: transparent;
 }
 
 h1, .heading {
@@ -99,7 +97,7 @@ pre {
     line-height: normal;
     border: 1px solid #ccc;
     padding: 3px 5px 3px 5px;
- }
+}
 
 /* common elements */
 
@@ -158,7 +156,7 @@ table.title_area {
 .title {
     font-weight: bold;
     font-size: 24pt;
- }
+}
 
 .yellowbox, .message, .error_message {
     background-color: #ffc;
@@ -171,6 +169,7 @@ table.title_area {
 .message, .error_message {
     font-size: 80%;
 }
+
 .message {
     color: #055;
 }

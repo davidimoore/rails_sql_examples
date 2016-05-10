@@ -1,7 +1,7 @@
 development: &default
   adapter: postgresql
   host: localhost
-  username: postgres
+  username: davidmoore
   database: <%= ENV.fetch("APP_NAME") %>_dev
   timeout: 5000
 
