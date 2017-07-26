@@ -6,6 +6,7 @@
 #  name        :string
 #  role_id     :integer
 #  location_id :integer
+#  manager_id  :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #

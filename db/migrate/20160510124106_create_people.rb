@@ -4,6 +4,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :name
       t.integer :role_id
       t.integer :location_id
+      t.integer :manager_id
 
       t.timestamps null: false
     end
